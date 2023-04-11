@@ -1,0 +1,147 @@
+@import url('fonts.css');
+html, body{
+    margin: 0%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+:root{
+    --text-gray: #3f4954;
+    --text-light : #686666da;
+    --bg-color: #0f0f0f;
+    --white: #ffffff;
+    --midnight: #104f55;
+
+    /* gradient color   */
+    --sky: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    /*      theme font-family   */
+    --Lobster: 'Lobster', cursive;
+    --Anton: 'Anton', cursive;
+    --Josefin : 'Josefin', cursive;
+    --Lexend: 'Lexend', cursive;
+    --Livvic : 'Livvic', cursive;
+    --Mukta :'Mukta', sans-serif;
+}
+
+
+/* ---------------- Global Classes ---------------*/
+
+a{
+    text-decoration: none;
+    color: var(--text-gray);
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: column;    
+    flex-wrap: wrap;
+}
+
+ul{
+    list-style-type: none;
+}
+
+h1{
+    font-family: var(--Lexend);
+    font-size: 2.5rem;
+}
+
+h2{
+    font-family: var(--Lexend);
+}
+
+span{
+    font-family:var(--Mukta);
+}
+
+.container{
+    margin: 0 5vw;
+}
+
+.text-gray{
+    color: var(--text-gray);
+}
+
+p{
+    font-family: var(--Lexend);
+    color: var(--text-light);
+}
+/*------------------------------------------- global classes --------------------------------------------------*/
+.nav{
+    position :absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    height:100%;
+    background: white;
+    padding: 0 2rem;
+    height: 0rem;
+    min-height: 10vh;
+    overflow: hidden;
+    transition: height 1s ease-in-out;
+}
+
+.nav .nav-menu{ 
+    display: flex;  
+    position:fixed;
+    justify-content: space-between;
+    transition:all 0.5s ease;
+}
+
+.nav .toggle-collapse .toggle-icons{
+    display: flex;
+    position :relative;
+    justify-content: flex-end;
+    padding: 1.7rem 0;
+}
+
+.nav .toggle-collapse .toggle-icons i{
+    font-size: 1.4rem;
+    color: var(--text-gray);
+}
+
+.collapse{
+    height: 30rem;
+}
+
+.nav .nav-items{
+    display: inline;
+    flex-direction: column; 
+    margin: 0;
+}
+
+.nav .nav-items .nav-link{
+    padding: 1.05rem 1rem;
+    position: relative;
+    font-family:var(--Mukta);
+    font-size: 1rem;
+    text-transform:uppercase;
+}
+
+.nav .nav-items .nav-link:hover{
+    font-weight:bolder;
+    /* background-color: #e13e3e; */
+}
+
+.nav .nav-brand a{
+    font-size: 1.6rem;
+    padding: 1rem 0;
+    display: block;
+    font-family: var(--Lobster);
+    font-size: 1.6rem;
+}
+
+.nav .social{
+    padding: 1.4rem 0
+}
+
+.nav .social i {
+    padding: 0 .4rem;
+}
+
+.nav .social i:hover{
+   font-weight:bold;
+}
+.nav-item1{
+    padding: 0.5rem;
+}

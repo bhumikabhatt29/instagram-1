@@ -1,0 +1,28 @@
+@font-face {
+    font-family: Lobster;
+    src: url('https://fonts.google.com/specimen/Lobster');
+}
+
+/*  font-family: Anton  */
+@font-face {
+    font-family: Anton;
+    src: url('https://fonts.google.com/specimen/Anton?query=Anton');
+}
+
+/*  font-family: Josefin  */
+@font-face {
+    font-family: Josefin;
+    src: url('https://fonts.google.com/specimen/Josefin+Sans?query=Josefin');
+}
+
+/*  font-family: Lexend  */
+@font-face {
+    font-family: Lexend;
+    src: url('https://fonts.google.com/specimen/Lexend?query=Lexend');
+}
+
+/*  font-family: Livvic  */
+@font-face {
+    font-family: Livvic;
+    src: url('https://fonts.google.com/specimen/Livvic?query=Livvic');
+}

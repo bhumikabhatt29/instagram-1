@@ -1,0 +1,147 @@
+html, body{
+    margin: 0%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+.recommendation-box{
+    margin:7.4px;
+    margin-right:15px ;
+    padding:0.7rem;
+    /* border: 1px solid black; */
+    display: fixed;
+    position :absolute;
+    top:0;
+    bottom:0;
+    right:0;
+    width:21rem; 
+}
+.box .reco{
+    padding-bottom:2.7rem;
+    position :relative;
+    height: 1px;
+   
+}
+.box .my-profile{
+    padding-bottom:2.99em;
+    position :relative;
+    height: 0.4rem;
+   
+}
+.title{
+    display: flex; 
+    position:relative;
+    /* border: 1px solid red; */
+    height: 2.8rem ;
+    vertical-align: middle;
+}
+.title p{
+    position:absolute;
+    left:0px;
+    padding-left: 0px ;
+    font-weight:549;
+    vertical-align: middle;
+}
+.title span{
+    position:absolute;
+    right:0;
+    top:0;
+    font-weight: bold;
+    cursor: pointer;
+}
+.reco{
+    padding-left:1rem;
+    padding-top:1rem;
+    /* border:1px solid black; */
+    display: flex;
+    padding: 1rem 0; 
+    position:absolute;
+}
+.reco .user span,.my-profile .myuser span{
+    font-size:0.82rem;
+}
+
+.reco .profile img{
+    position :absolute;
+    justify-content: center;
+    top:0;
+    bottom:0;
+    left:0;
+    border-radius:80px; 
+    height:2.6rem;
+    width: 2.6rem; 
+    padding-left: 3px;  
+}
+.my-profile .myprofile img{
+    position :absolute;
+    justify-content: center;
+    top:0;
+    bottom:0;
+    left:0;
+    border-radius:80px; 
+    height:3.5rem;
+    width: 3.5rem; 
+    padding-left: 3px; 
+    padding-bottom:0.1rem;
+} 
+.reco .myuser h4{
+    display:block;
+    position:relative;
+    padding-bottom: 0;
+    
+}
+.reco .user{
+    display:flex;
+    flex-direction: column;
+    position:relative;
+    left:16%;
+    top:0;
+    justify-content:center;
+    padding:0.4rem;
+}
+.my-profile .myuser{
+    display:flex;
+    flex-direction: column;
+    position:absolute;
+    left:26%;
+    top:0;
+    padding:0 0.4rem;
+}
+.reco .myuser span{
+    display:block;
+    position:relative;
+    padding-top: 0.01px;
+    
+}
+.reco .user h4{
+    font-size: 1.2rem;
+    display:block;
+    position:relative;
+    padding-bottom: 0;
+    
+}
+.reco .user span{
+    display:block;
+    position:relative;
+    padding-top: 0;
+    
+}
+.reco .btn{
+    position:absolute;
+    right:2.05rem;
+    height:0.8rem;
+    width:0.2rem;
+    color:blue;
+   justify-content:top;
+}
+.reco .btn:hover{
+    font-weight: bold;
+}
+.color{
+    color: rgb(135, 134, 134);
+}
+.footer{
+    padding-top: 1.2rem;
+    font-size:0.9rem ;
+    padding-left:1rem;
+}
+

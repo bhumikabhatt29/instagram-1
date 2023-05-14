@@ -50,22 +50,10 @@ h2{
     font-family: var(--Lexend);
 }
 
-span{
-    font-family:var(--Mukta);
-}
-
 .container{
     margin: 0 5vw;
 }
 
-.text-gray{
-    color: var(--text-gray);
-}
-
-p{
-    font-family: var(--Lexend);
-    color: var(--text-light);
-}
 /*------------------------------------------- global classes --------------------------------------------------*/
 .nav{
     position :absolute;
@@ -77,8 +65,9 @@ p{
     padding: 0 2rem;
     height: 0rem;
     min-height: 10vh;
-    overflow: hidden;
-    transition: height 1s ease-in-out;
+    overflow: hidden; 
+    padding-left: 35px;
+    padding-right:50px;
 }
 
 .nav .nav-menu{ 

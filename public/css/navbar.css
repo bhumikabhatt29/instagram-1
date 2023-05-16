@@ -12,8 +12,6 @@ html, body{
     --white: #ffffff;
     --midnight: #104f55;
 
-    /* gradient color   */
-    --sky: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
     /*      theme font-family   */
     --Lobster: 'Lobster', cursive;
     --Anton: 'Anton', cursive;
@@ -87,6 +85,7 @@ h2{
 .nav .toggle-collapse .toggle-icons i{
     font-size: 1.4rem;
     color: var(--text-gray);
+    color:#0f0f0f;
 }
 
 .collapse{

@@ -6,12 +6,7 @@ html, body{
 }
 
 :root{
-    --text-gray: #3f4954;
-    --text-light : #686666da;
-    --bg-color: #0f0f0f;
-    --white: #ffffff;
-    --midnight: #104f55;
-
+    --text-gray: #3e464e;
     /*      theme font-family   */
     --Lobster: 'Lobster', cursive;
     --Anton: 'Anton', cursive;
@@ -20,8 +15,6 @@ html, body{
     --Livvic : 'Livvic', cursive;
     --Mukta :'Mukta', sans-serif;
 }
-
-
 /* ---------------- Global Classes ---------------*/
 
 a{
@@ -59,7 +52,6 @@ h2{
     bottom:0;
     left:0;
     height:100%;
-    background: white;
     padding: 0 2rem;
     height: 0rem;
     min-height: 10vh;
@@ -67,25 +59,10 @@ h2{
     padding-left: 35px;
     padding-right:50px;
 }
-
 .nav .nav-menu{ 
     display: flex;  
     position:fixed;
     justify-content: space-between;
-    transition:all 0.5s ease;
-}
-
-.nav .toggle-collapse .toggle-icons{
-    display: flex;
-    position :relative;
-    justify-content: flex-end;
-    padding: 1.7rem 0;
-}
-
-.nav .toggle-collapse .toggle-icons i{
-    font-size: 1.4rem;
-    color: var(--text-gray);
-    color:#0f0f0f;
 }
 
 .collapse{
@@ -108,7 +85,6 @@ h2{
 
 .nav .nav-items .nav-link:hover{
     font-weight:bolder;
-    /* background-color: #e13e3e; */
 }
 
 .nav .nav-brand a{
@@ -132,4 +108,22 @@ h2{
 }
 .nav-item1{
     padding: 0.5rem;
+    color: var(--text-gray);
+}
+.btn-secondary{
+    color: var(--text-gray);
+    background-color: #fff;
+    padding: 0.5rem;
+    border-color: white;
+    font-family:var(--Mukta);
+    font-size: 1.12rem;
+}
+.dropup-center {
+    padding-left:1rem;
+}
+.fa-bars{
+    padding-right:9px;
+}
+.btn-secondary:hover{
+    font-weight: bolder;
 }

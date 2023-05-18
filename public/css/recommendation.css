@@ -14,6 +14,7 @@ html, body{
     bottom:0;
     right:0;
     width:21rem; 
+    padding-right:0.05rem;
 }
 .box .reco{
     padding-bottom:2.7rem;
@@ -130,7 +131,7 @@ html, body{
     right:2.05rem;
     height:0.8rem;
     width:0.2rem;
-    color:blue;
+    color:rgb(20, 176, 290);
    justify-content:top;
 }
 .reco .btn:hover{

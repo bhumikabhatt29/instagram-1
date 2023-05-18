@@ -116,7 +116,8 @@ h2{
     padding: 0.5rem;
     border-color: white;
     font-family:var(--Mukta);
-    font-size: 1.12rem;
+    font-size: 1.1rem;
+    text-transform:uppercase;
 }
 .dropup-center {
     padding-left:1rem;
@@ -126,4 +127,7 @@ h2{
 }
 .btn-secondary:hover{
     font-weight: bolder;
+    color: var(--text-gray);
+    background-color: #fff;
+    border-color: white;
 }

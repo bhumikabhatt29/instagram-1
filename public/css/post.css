@@ -3,10 +3,11 @@
     margin-left: 35rem;
     padding-top: 3rem;
 } */
-
 .post-section {
+  padding-top:0.8rem;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    padding-left: 24.2rem;
   }
   
   .post {

@@ -11,10 +11,13 @@ app.get("/",function(req,res){
 app.get("/navbar",function(req,res){
     res.render("navbar.ejs");
 });
+app.get("/profile",function(req,res){
+  res.render("profile.ejs");
+});
 app.post('/',(req,res)=>{
     res.render("navbar.ejs");
 });
-app.listen(3001,function(){
+app.listen(3000,function(){
     console.log("server is running on port 3001");
 })
 

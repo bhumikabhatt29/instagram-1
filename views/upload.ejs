@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Post</title>
+    <link rel="stylesheet" href="/css/upload.css">
+</head>
+<body>
+    <div class="card">
+  <div class="card-header">
+    Create New Post
+  </div>
+  <div class="card-body">
+    <img class="post-img"src="/images/create-post.png" alt="image" >
+    <p class="card-text">Drag photos and videos here</p>
+    <form action="/upload" method="post"enctype="multipart/form-data" class="form">
+    
+        <input class="image" type="file" name="image" id="post-image">
+        <input type="text"    name="caption" id="caption" placeholder="Write your caption...">
+        <a href="#" class="btn"> <input class="submit" type="submit" value="Submit">
+            </a></form>
+        </div>
+    </div>
+</body>
+</html>

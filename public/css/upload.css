@@ -1,0 +1,81 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     color: black;
+}
+.card{
+    display:block;
+    position: absolute;
+    top:5rem;
+    left:30rem;
+     width: 23rem;
+    height:29rem;
+    display:flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    /* place-content: center;  */
+    padding:1rem;
+    /* border:2px solid rgb(11, 11, 11); */
+    box-shadow: 1px 0.5px 3px 3px rgba(199, 199, 200, 510);
+}
+.card-header{
+    display:block;
+    position: absolute;
+    top:0.5rem;
+    font-size:1.8rem;
+    font-weight: bold;
+    align-items: center;
+    border-bottom: 1px solid black;
+    /* padding-bottom:2rem; */
+}
+.card-body{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    place-content: center;
+    padding-top:3.5rem;
+}
+.card-text{
+   font-size:1.3rem ;
+
+}
+.form{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    place-content: center;
+    padding:3rem;
+}
+
+.post-img{
+    position: relative;
+    height:8rem;
+    width:10rem;
+    justify-content: center;
+    align-items: center;
+}
+.image{
+    position:relative;
+   width:13rem;
+    justify-content: center;
+    align-items: center;
+    place-content: center;
+    padding:1rem;
+}
+#caption{
+    height:1.9rem;
+    width:15rem;
+}
+.btn{
+    padding:1rem;
+}
+.submit{
+    width:4.6rem;
+    height:1.6rem;
+}

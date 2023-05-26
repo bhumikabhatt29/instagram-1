@@ -220,6 +220,7 @@
 </div>
 
 <!----------------------------------------------------------post section--------------------------------------------------------------->
+<% for(var i=count-1;i>=0;i--){%>
 <div class="postSection">
 <div class="card">
   <div class="top">
@@ -234,7 +235,8 @@
       </div>
   </div>
   <div class="imgBx">
-   <img src="bg.jpg" class="cover"> 
+    <%console.log("images/"+Result[i].imageName) %>
+   <img src="/images/<%=Result[i].imageName%>" class="cover"> 
   </div>
   <div class="actionBtns">
       <div class="left">
@@ -258,6 +260,8 @@
   <h5 class="postTime">4 hours ago</h5>
 </div>
 </div>
+<% } %>
+
 
 <!------------------------------------------recommendation box----------------------------------------> 
 <script src="post.js"></script>

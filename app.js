@@ -5,16 +5,8 @@ const multer = require('multer');
 const path= require('path');
 const mongoose=require("mongoose");
 let app=express();
-
-// const storage = multer.diskStorage({
-//     destination:(req,file,cb)=>{
-//       cb(null,"./public/images");
-//     },
-//     filename :(req,file,cb) =>{
-//         console.log(file);
-//         cb(null,Date.now()+ path.extname(file.originalname))
-//     }
-// })
+var Email_value;
+var image_particular_user_array=[];
 
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
@@ -24,8 +16,6 @@ var storage = multer.diskStorage({
         callback(null, file.originalname);
     }
 });
-
-// const upload =multer({storage:storage});
 
 var upload = multer({ storage: storage }).single('images');
 
@@ -38,8 +28,17 @@ const imageSchema=new mongoose.Schema({
     imageName:String,
     caption:String
 });
+//schema to store user info
+const userInfo=new mongoose.Schema({
+    name:String,
+    phoneNo:Number,
+    email:String,
+    password:String,
+    imageuploded:[imageSchema]
+});
 //model
 const imageData=new mongoose.model("imageData",imageSchema);
+const userData=new mongoose.model("userData",userInfo);
 
 app.get("/",function(req,res){
     res.render("signup.ejs");
@@ -48,7 +47,7 @@ app.get("/upload",(req,res)=>{
     res.render("upload.ejs");
 });
 
-// app.post("/upload",upload.single("images"),(req,res)=>{
+
 
 app.post("/upload",upload,(req,res)=>{
    var image=req.file.originalname;
@@ -66,13 +65,21 @@ app.post("/upload",upload,(req,res)=>{
    }).catch(function(err){
     console.log(err);
    });
+ //inserting image uplode data into user info collection
+image_particular_user_array.push(Image);
+userData.findOneAndUpdate({email:Email_value}, { imageuploded:image_particular_user_array }).then(function(){
+                console.log("successfully inserted the image data into user data");
+            }).catch(function(err){
+                console.log("error in update function");
+                console.log(err);
+            });
 
 })
 app.get("/navbar",function(req,res){
     imageData.find().then(function(result){
         var count=result.length;
-        console.log(count);
-        console.log(result[1].imageName);
+        // console.log(count);
+        // console.log(result[1].imageName);
         res.render("navbar.ejs",{count:count,Result:result});
     }).catch(function(err){
       console.log(err);
@@ -83,7 +90,19 @@ app.get("/profile",function(req,res){
   res.render("profile.ejs");
 });
 
-app.post('/',(req,res)=>{
+app.post('/',function(req,res){
+    Email_value=req.body.email;
+    const  newUser=new userData({
+        name:req.body.First_Name,
+        phoneNo:req.body.Last_Name,
+        email:req.body.email,
+        password:req.body.city_name
+    });
+     newUser.save().then(function(){
+        console.log("user data successfully saved");
+     }).catch(function(err){
+         console.log(err);
+     })
     res.redirect("/navbar");
 });
 

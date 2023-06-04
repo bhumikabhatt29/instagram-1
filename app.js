@@ -19,7 +19,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage }).single('images');
 
-mongoose.connect("mongodb://127.0.0.1:27017/imageDB", { useNewUrlParser: true });
+mongoose.connect("mongodb://127.0.0.1:27017/UserDB", { useNewUrlParser: true });//database name changed to userdb
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine',ejs) ; 
 app.use(express.static("public"));
@@ -89,14 +89,35 @@ app.get("/navbar",function(req,res){
 app.get("/profile",function(req,res){
   res.render("profile.ejs");
 });
+//route for login page
+app.get("/login",function(req,res){
+    res.render("login.ejs");
+  });
 
+  //check if mail and password mathches from our database
+app.post("/login",async (req,res)=>{
+    try{
+        const check= await userData.findOne({email:req.body.email});
+        if(check.password===req.body.password){
+            res.redirect("/navbar");
+        }
+        else{
+            res.status("404").send("wrong password");
+        }
+
+    }
+    catch{
+        // res.send("account does not exist");
+        res.redirect("/");
+    }
+})
 app.post('/',function(req,res){
     Email_value=req.body.email;
     const  newUser=new userData({
-        name:req.body.First_Name,
-        phoneNo:req.body.Last_Name,
+        name:req.body.fullname,
+        phoneNo:req.body.phonenumber,
         email:req.body.email,
-        password:req.body.city_name
+        password:req.body.password
     });
      newUser.save().then(function(){
         console.log("user data successfully saved");

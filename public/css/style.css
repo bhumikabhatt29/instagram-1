@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 display-flex, .display-flex, .display-flex-center, .signup-content, .signin-content, .social-login, .socials {
 	display: flex;
 	display: -webkit-flex; }
@@ -263,7 +263,9 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
 	margin: 0 55px; }
   
   .form-title {
-	margin-bottom: 33px; }
+	margin-bottom: 33px;
+	font-family: 'Lobster', cursive;
+	font-weight: 400;  }
   
   .signup-image {
 	margin-top: 45px; }

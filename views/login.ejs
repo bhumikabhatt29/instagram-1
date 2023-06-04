@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up Form by Colorlib</title>
+    <title>Log in Form</title>
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Mukta:wght@500&display=swap" rel="stylesheet">
+
     <!-- Main css -->
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
-
     <div class="main">
 
         <!-- Sign up form -->
@@ -22,31 +22,23 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Instagram</h2>
-                        <form method="POST" class="register-form" id="register-form" action="/">
-                            <div class="form-group">
-                                <label for="First_Name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="fullname" id="First_Name" placeholder="fullname"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="Last_Name"><i class="zmdi zmdi-pin"></i></label>
-                                <input type="text" name="phonenumber" id="Last_Name" placeholder="phonenumber"/>
-                            </div>
+                        <form method="POST" class="register-form" id="register-form" action="/login">
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
                                 <input type="email" name="email" id="email" placeholder="Your Email"/>
                             </div>
                             <div class="form-group">
-                                <label for="city"><i class="zmdi zmdi-home"></i></label>
-                                <input type="text" name="password" id="city" placeholder="Password"/>
+                                <label for="password"><i class="zmdi zmdi-home"></i></label>
+                                <input type="text" name="password" id="password" placeholder="Password"/>
                             </div>
+                           
                             <div class="form-group">
                                 <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
                                 <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
                             </div>
                             <div class="form-group form-button">
                                 <!-- <input type="submit" name="signup" id="signup" class="form-submit" value="Go"/> -->
-                                <button type="submit" id="signup" class="form-submit" >Submit</button>
-                                <div class="login">Already have an account? <a href="/login" style="color:'blue'">Log in</a></div>
+                                <button type="submit" id="signup" class="form-submit" >Log in</button>
                             </div>
                         </form>
                         <ul class="socials">

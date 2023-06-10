@@ -6,6 +6,7 @@ const path= require('path');
 const mongoose=require("mongoose");
 let app=express();
 var Email_value;
+// var email_value;
 var image_particular_user_array=[];
 
 var storage = multer.diskStorage({
@@ -47,6 +48,32 @@ app.get("/upload",(req,res)=>{
     res.render("upload.ejs");
 });
 
+app.get("/navbar",function(req,res){
+    // console.log(Email_value);
+    userData.findOne({email:Email_value}).then(function(result){
+        var count=result.imageuploded.length;
+        console.log(result);
+        console.log(result.imageuploded.length); 
+        // console.log(result[1].imageName);
+        res.render("navbar.ejs",{count:count,Result:result.imageuploded});
+    }).catch(function(err){
+      console.log(err);
+    });
+   
+})
+
+app.get("/profile",function(req,res){
+        userData.findOne({email:Email_value}).then(function(r){
+            var count=r.imageuploded.length;
+            console.log(r);
+            console.log(r.imageuploded.length); 
+            // console.log(result[1].imageName);
+            res.render("profile.ejs",{count:count,Result:r.imageuploded});
+        }).catch(function(err){
+          console.log(err);
+        });
+});
+
 
 
 app.post("/upload",upload,(req,res)=>{
@@ -65,6 +92,7 @@ app.post("/upload",upload,(req,res)=>{
    }).catch(function(err){
     console.log(err);
    });
+
  //inserting image uplode data into user info collection
 image_particular_user_array.push(Image);
 userData.findOneAndUpdate({email:Email_value}, { imageuploded:image_particular_user_array }).then(function(){
@@ -75,42 +103,38 @@ userData.findOneAndUpdate({email:Email_value}, { imageuploded:image_particular_u
             });
 
 })
-app.get("/navbar",function(req,res){
-    imageData.find().then(function(result){
-        var count=result.length;
-        // console.log(count);
-        // console.log(result[1].imageName);
-        res.render("navbar.ejs",{count:count,Result:result});
-    }).catch(function(err){
-      console.log(err);
-    });
-   
-});
-app.get("/profile",function(req,res){
-  res.render("profile.ejs");
-});
-//route for login page
+
+
+
+
 app.get("/login",function(req,res){
     res.render("login.ejs");
   });
 
   //check if mail and password mathches from our database
-app.post("/login",async (req,res)=>{
-    try{
-        const check= await userData.findOne({email:req.body.email});
-        if(check.password===req.body.password){
-            res.redirect("/navbar");
-        }
-        else{
-            res.status("404").send("wrong password");
-        }
-
-    }
-    catch{
-        // res.send("account does not exist");
-        res.redirect("/");
-    }
+app.post("/login",function(req,res){
+    
+        Email_value=req.body.email;
+        // email_value=req.body.email;
+         userData.findOne({email:req.body.email}).then(function(result){
+            
+            pass=req.body.password;
+            if(result.password=pass)
+            {
+                console.log("login successfully");
+                res.redirect("/navbar");
+            }
+            else
+            {
+                console.log("wrong password");
+            }
+        }).catch(function(err){
+            console.log(err);
+            res.redirect("/");
+        });
+       
 })
+
 app.post('/',function(req,res){
     Email_value=req.body.email;
     const  newUser=new userData({

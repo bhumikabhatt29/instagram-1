@@ -16,6 +16,12 @@ html, body{
     width:21rem; 
     padding-right:0.05rem;
 }
+@media screen and (max-width: 900px){
+    .recommendation-box{
+        display: none;
+        overflow: scroll;
+    }
+}
 .box .reco{
     padding-bottom:2.7rem;
     position :relative;

@@ -59,14 +59,16 @@ h2{
     padding-left: 35px;
     padding-right:50px;
 }
+@media only screen and (max-height: 500px){
+    .nav .nav-items .nav-link{
+        padding: 0.8rem 1rem;
+        position: relative;
+    }
+    }
 .nav .nav-menu{ 
     display: flex;  
     position:fixed;
     justify-content: space-between;
-}
-
-.collapse{
-    height: 30rem;
 }
 
 .nav .nav-items{
@@ -76,7 +78,7 @@ h2{
 }
 
 .nav .nav-items .nav-link{
-    padding: 1.05rem 1rem;
+    padding: 0.96rem 1rem;
     position: relative;
     font-family:var(--Mukta);
     font-size: 1rem;
@@ -100,7 +102,7 @@ h2{
 }
 
 .nav .social i {
-    padding: 0 .4rem;
+    padding: 0.4rem;
 }
 
 .nav .social i:hover{
@@ -123,11 +125,25 @@ h2{
     padding-left:1rem;
 }
 .fa-bars{
-    padding-right:9px;
+    padding-right:8px;
 }
 .btn-secondary:hover{
     font-weight: bolder;
     color: var(--text-gray);
     background-color: #fff;
     border-color: white;
+}
+.flex{
+    margin-left: 22rem;
+    /* margin-left:30rem; */
+}
+@media only screen and (max-width:1594px){
+    .flex{
+        margin-left:15rem;
+    } 
+    }
+@media only screen and (max-width:1283px){
+.flex{
+    margin-left:12.3rem;
+} 
 }

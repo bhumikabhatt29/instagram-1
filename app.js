@@ -7,7 +7,6 @@ const mongoose=require("mongoose");
 let app=express();
 var Email_value;
 var num;
-// var email_value;
 var image_particular_user_array=[];
 
 var storage = multer.diskStorage({
@@ -50,16 +49,12 @@ app.get("/upload",(req,res)=>{
 });
 
 app.get("/navbar",function(req,res){
-    // console.log(Email_value);
     userData.findOne({email:Email_value}).then(function(result){
         var count=result.imageuploded.length;
-        // console.log("count="+count);
-        //intilizing num value
+        //num is used in /delete route
         num=count;
-        // console.log(result);
-        // console.log(result.imageuploded.length); 
-        // console.log(result[1].imageName);
-        res.render("navbar.ejs",{count:count,Result:result.imageuploded});
+        //updating name as user name
+        res.render("navbar.ejs",{count:count,Result:result.imageuploded,Name:result.name});
     }).catch(function(err){
       console.log(err);
     });
@@ -71,7 +66,6 @@ app.get("/profile",function(req,res){
             var count=r.imageuploded.length;
             console.log(r);
             console.log(r.imageuploded.length); 
-            // console.log(result[1].imageName);
             res.render("profile.ejs",{count:count,Result:r.imageuploded});
         }).catch(function(err){
           console.log(err);

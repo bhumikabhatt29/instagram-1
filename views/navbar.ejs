@@ -243,10 +243,18 @@
          <div class="btn btn-secondary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="bi bi-three-dots-vertical dot"></i>
           </div>
-          <ul class="dropdown-menu">
-            <li><button class="post-button   edit"><a class="dropdown-item" href="#">Edit</a></button></li>
-            <li><button class="post-button delete"><a class="dropdown-item " href="#">Delete</a></button></li>
+          
+            <ul class="dropdown-menu">
+              <!--implemementing delete feature -->
+              <form action="/edit" method="post">
+              <li><button type="submit" class="post-button delete" name="Delete_post" value="<%=Result[i].id%>">Edit</button></li>
+              </form>
+            <!--value and on change function done --> 
+            <form action="/delete" method="post">
+            <li><button type="submit" class="post-button delete" name="Delete_post" value="<%=Result[i].id%>">Delete</button></li>
+          </form>
           </ul>
+          
         </div>
           <!-- <img src="dot.png" class="dot"> -->
       </div>

@@ -6,6 +6,7 @@ const path= require('path');
 const mongoose=require("mongoose");
 let app=express();
 var Email_value;
+var num;
 // var email_value;
 var image_particular_user_array=[];
 
@@ -20,7 +21,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage }).single('images');
 
-mongoose.connect("mongodb://127.0.0.1:27017/UserDB", { useNewUrlParser: true });//database name changed to userdb
+mongoose.connect("mongodb://127.0.0.1:27017/imageDB", { useNewUrlParser: true });//database name changed to userdb
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine',ejs) ; 
 app.use(express.static("public"));
@@ -52,8 +53,11 @@ app.get("/navbar",function(req,res){
     // console.log(Email_value);
     userData.findOne({email:Email_value}).then(function(result){
         var count=result.imageuploded.length;
-        console.log(result);
-        console.log(result.imageuploded.length); 
+        // console.log("count="+count);
+        //intilizing num value
+        num=count;
+        // console.log(result);
+        // console.log(result.imageuploded.length); 
         // console.log(result[1].imageName);
         res.render("navbar.ejs",{count:count,Result:result.imageuploded});
     }).catch(function(err){
@@ -73,6 +77,10 @@ app.get("/profile",function(req,res){
           console.log(err);
         });
 });
+
+app.get("/login",function(req,res){
+    res.render("login.ejs");
+  });
 
 
 
@@ -103,13 +111,6 @@ userData.findOneAndUpdate({email:Email_value}, { imageuploded:image_particular_u
             });
 
 })
-
-
-
-
-app.get("/login",function(req,res){
-    res.render("login.ejs");
-  });
 
   //check if mail and password mathches from our database
 app.post("/login",function(req,res){
@@ -149,6 +150,34 @@ app.post('/',function(req,res){
          console.log(err);
      })
     res.redirect("/navbar");
+});
+
+//but not satisfied with the approch ,website will become slow as data increases for data >100000 delete function
+//will take approx 1 sec which is slow
+app.post("/delete",function(req,res){
+   
+    console.log("/delete route");
+    const id=req.body.Delete_post;
+    var index_value;
+    //findnig user who has log in
+    userData.findOne({email:Email_value}).then(function(result){
+        for(var i=0;i<num;i++)
+        {   //finding index of image in array
+            const img_id=result.imageuploded[i]._id;
+            if(img_id==id)
+            {
+               index_value=i;
+            }
+        } 
+        //deleting object
+        (result.imageuploded).splice(index_value,1);
+        //saving changes
+          result.save();
+        console.log("successfully Deleted baby");
+        res.redirect("/navbar");
+    }).catch(function(err){
+        console.log(err);
+     }); 
 });
 
 app.listen(3000,function(){

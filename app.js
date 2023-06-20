@@ -7,8 +7,10 @@ const mongoose=require("mongoose");
 let app=express();
 var Email_value;
 var num;
+var edit_image_caption;
+var index_value;
 var image_particular_user_array=[];
-
+var imgname="";
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
         callback(null, './public/images');
@@ -20,7 +22,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage }).single('images');
 
-mongoose.connect("mongodb://127.0.0.1:27017/imageDB", { useNewUrlParser: true });//database name changed to userdb
+mongoose.connect("mongodb://127.0.0.1:27017/UserDB", { useNewUrlParser: true });//database name changed to userdb
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine',ejs) ; 
 app.use(express.static("public"));
@@ -44,8 +46,13 @@ const userData=new mongoose.model("userData",userInfo);
 app.get("/",function(req,res){
     res.render("signup.ejs");
 });
+
 app.get("/upload",(req,res)=>{
     res.render("upload.ejs");
+});
+
+app.get("/edit",(req,res)=>{
+    res.render("edit.ejs");
 });
 
 app.get("/navbar",function(req,res){
@@ -66,7 +73,7 @@ app.get("/profile",function(req,res){
             var count=r.imageuploded.length;
             console.log(r);
             console.log(r.imageuploded.length); 
-            res.render("profile.ejs",{count:count,Result:r.imageuploded});
+            res.render("profile.ejs",{count:count,Result:r.imageuploded,Name:r.name});
         }).catch(function(err){
           console.log(err);
         });
@@ -79,15 +86,13 @@ app.get("/login",function(req,res){
 
 
 app.post("/upload",upload,(req,res)=>{
-   var image=req.file.originalname;
+   var image=req.file.originalname;     
    var Caption=req.body.captions;
-        
    console.log(image);
    const Image=new imageData({
          imageName:image,
          caption:Caption
    });
-
    Image.save().then(function(){
     console.log("saved succesfully")
     res.redirect("/navbar");
@@ -102,7 +107,7 @@ userData.findOneAndUpdate({email:Email_value}, { imageuploded:image_particular_u
             }).catch(function(err){
                 console.log("error in update function");
                 console.log(err);
-            });
+            })
 
 })
 
@@ -151,9 +156,9 @@ app.post('/',function(req,res){
 app.post("/delete",function(req,res){
    
     console.log("/delete route");
-    const id=req.body.Delete_post;
+    var id=req.body.Delete_post;
     var index_value;
-    //findnig user who has log in
+    //finding user who has log in
     userData.findOne({email:Email_value}).then(function(result){
         for(var i=0;i<num;i++)
         {   //finding index of image in array
@@ -172,6 +177,37 @@ app.post("/delete",function(req,res){
     }).catch(function(err){
         console.log(err);
      }); 
+});
+
+app.post("/edit",function(req,res){
+    //console.log("request aa gye re baba");
+    var Id=req.body.Edit_post;
+    console.log(Id);
+    edit_image_caption=Id;
+    res.render("edit.ejs");
+})
+
+app.post("/editCaption",function(req,res){
+    const captionValue=req.body.newcaption;
+    var index_value;
+    // console.log(captionValue);
+    userData.findOne({email:Email_value}).then(function(result){
+        for(var i=0;i<num;i++)
+        {   
+            //finding index of image in array
+            const img_id=result.imageuploded[i]._id;
+            if(img_id==edit_image_caption)
+            {
+               index_value=i;
+            }
+        } 
+        console.log(index_value);
+        result.imageuploded[index_value].caption=captionValue;
+        result.save();
+        res.redirect("/navbar");
+    }).catch(function(err){
+        console.log(err);
+    })
 });
 
 app.listen(3000,function(){

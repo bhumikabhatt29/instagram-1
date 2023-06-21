@@ -29,7 +29,7 @@
     <script src="https://kit.fontawesome.com/74fd3014d4.js"></script>
     <script src="https://kit.fontawesome.com/icons/ellipsis-vertical?f=classic&s=regular"></script>
     <link rel="stylesheet" href="css/recommendation.css">
-</head>
+  </head>
 <body>
    
        <!-- ----------------------------  Navigation ------------------------------------------>
@@ -102,7 +102,7 @@
           </div>
           <div class="myuser">
                <h4>Myprofile</h4>
-               <span class="color">Myusername</span>
+               <span class="color"><%=Name%></span>
           </div>
           <div class="btn">
             <p>Switch</p>
@@ -240,24 +240,24 @@
       </div>
       <div>
         <div class="dropup-center dropup">
-         <div class="btn btn-secondary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="bi bi-three-dots-vertical dot"></i>
-          </div>
-          
-            <ul class="dropdown-menu">
-              <!--implemementing delete feature -->
-              <form action="/edit" method="post">
-              <li><button type="submit" class="post-button delete" name="Delete_post" value="<%=Result[i].id%>">Edit</button></li>
-              </form>
-            <!--value and on change function done --> 
-            <form action="/delete" method="post">
-            <li><button type="submit" class="post-button delete" name="Delete_post" value="<%=Result[i].id%>">Delete</button></li>
-          </form>
-          </ul>
-          
-        </div>
-          <!-- <img src="dot.png" class="dot"> -->
-      </div>
+          <div class="btn btn-secondary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+           <i class="bi bi-three-dots-vertical dot"></i>
+           </div>
+           
+             <ul class="dropdown-menu">
+               <!--implemementing delete feature -->
+               <form action="/edit" method="post">
+               <li><button type="submit" class="post-button delete" name="Edit_post" value="<%=Result[i]._id%>">Edit</button></a></li>
+               </form>
+             <!--value and on change function done --> 
+             <form action="/delete" method="post">
+             <li><button type="submit" class="post-button delete" name="Delete_post" value="<%=Result[i]._id%>">Delete</button></li>
+           </form>
+           </ul>
+           
+         </div>
+           <!-- <img src="dot.png" class="dot"> -->
+       </div>
   </div>
   <div class="imgBx">
    <img src="./images/<%=Result[i].imageName%>" class="cover"> 
@@ -273,7 +273,7 @@
       </div>
   </div>
   <h4 class="likes">3,860 likes</h4>
-  <h4 class="message"></h4>
+  <h4 class="message"><strong><%=Result[i].caption%></strong></h4>
   <h4 class="comments">view all 245 comments</h4>
   <div class="addComments">
       <div class="userImg">
@@ -288,6 +288,20 @@
 
 
 <!------------------------------------------recommendation box----------------------------------------> 
+<script>
+ function showInput() {
+      var textInputContainer = document.getElementById('textInputContainer');
+      textInputContainer.classList.remove('hidden');
+      textInputContainer.classList.add('show');
+      document.getElementsByClassName('dropdown-menu').style.width = '20rem';
+    }
+
+    function submitForm() {
+      var textInput = document.getElementById('textInput');
+      var userInput = textInput.value;
+      alert('Caption changed ' + userInput);
+    }
+</script>
 <script src="post.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 </body>

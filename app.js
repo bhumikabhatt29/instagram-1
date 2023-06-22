@@ -1,3 +1,4 @@
+require('dotenv').config();
 const ejs=require('ejs');
 const bodyParser=require('body-parser');
 const express=require('express');
@@ -42,8 +43,7 @@ const userInfo=new mongoose.Schema({
     imageuploded:[imageSchema]
 });
 //encryption
-const Secret="tujheSochta"
-userInfo.plugin(encryption,{secret:Secret,encryptedFields:["password"]});
+userInfo.plugin(encryption,{secret:process.env.SECRET,encryptedFields:["password"]});
 //model
 const imageData=new mongoose.model("imageData",imageSchema);
 const userData=new mongoose.model("userData",userInfo);

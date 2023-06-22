@@ -4,6 +4,7 @@ const express=require('express');
 const multer = require('multer');
 const path= require('path');
 const mongoose=require("mongoose");
+const encryption=require("mongoose-encryption");
 let app=express();
 var Email_value;
 var num;
@@ -11,6 +12,7 @@ var edit_image_caption;
 var index_value;
 var image_particular_user_array=[];
 var imgname="";
+//this will help the user to uplode images from the local system
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
         callback(null, './public/images');
@@ -22,7 +24,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage }).single('images');
 
-mongoose.connect("mongodb://127.0.0.1:27017/UserDB", { useNewUrlParser: true });//database name changed to userdb
+mongoose.connect("mongodb://127.0.0.1:27017/imageDB", { useNewUrlParser: true });//database name changed to userdb
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine',ejs) ; 
 app.use(express.static("public"));
@@ -39,6 +41,9 @@ const userInfo=new mongoose.Schema({
     password:String,
     imageuploded:[imageSchema]
 });
+//encryption
+const Secret="tujheSochta"
+userInfo.plugin(encryption,{secret:Secret,encryptedFields:["password"]});
 //model
 const imageData=new mongoose.model("imageData",imageSchema);
 const userData=new mongoose.model("userData",userInfo);

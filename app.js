@@ -1,11 +1,10 @@
-require('dotenv').config();
 const ejs=require('ejs');
 const bodyParser=require('body-parser');
 const express=require('express');
 const multer = require('multer');
 const path= require('path');
+const md5=require("md5");
 const mongoose=require("mongoose");
-const encryption=require("mongoose-encryption");
 let app=express();
 var Email_value;
 var num;
@@ -42,8 +41,6 @@ const userInfo=new mongoose.Schema({
     password:String,
     imageuploded:[imageSchema]
 });
-//encryption
-userInfo.plugin(encryption,{secret:process.env.SECRET,encryptedFields:["password"]});
 //model
 const imageData=new mongoose.model("imageData",imageSchema);
 const userData=new mongoose.model("userData",userInfo);
@@ -122,8 +119,8 @@ app.post("/login",function(req,res){
         Email_value=req.body.email;
         // email_value=req.body.email;
          userData.findOne({email:req.body.email}).then(function(result){
-            
-            pass=req.body.password;
+            //hashing 
+            pass=md5(req.body.password);
             if(result.password=pass)
             {
                 console.log("login successfully");
@@ -146,7 +143,8 @@ app.post('/',function(req,res){
         name:req.body.fullname,
         phoneNo:req.body.phonenumber,
         email:req.body.email,
-        password:req.body.password
+        //hashing
+        password:md5(req.body.password)
     });
      newUser.save().then(function(){
         console.log("user data successfully saved");

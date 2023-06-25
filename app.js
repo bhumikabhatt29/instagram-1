@@ -3,7 +3,8 @@ const bodyParser=require('body-parser');
 const express=require('express');
 const multer = require('multer');
 const path= require('path');
-const md5=require("md5");
+const bcrypt=require("bcrypt");
+const saltRounds=10;
 const mongoose=require("mongoose");
 let app=express();
 var Email_value;
@@ -23,7 +24,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage }).single('images');
 
-mongoose.connect("mongodb://127.0.0.1:27017/UserDB", { useNewUrlParser: true });//database name changed to userdb
+mongoose.connect("mongodb://127.0.0.1:27017/imageDB", { useNewUrlParser: true });//database name changed to userdb
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine',ejs) ; 
 app.use(express.static("public"));
@@ -114,18 +115,22 @@ userData.findOneAndUpdate({email:Email_value}, { imageuploded:image_particular_u
 app.post("/login",function(req,res){
     
         Email_value=req.body.email;
+        pass=req.body.password;
         // email_value=req.body.email;
-         userData.findOne({email:req.body.email}).then(function(result){
-            //hashing 
-            pass=md5(req.body.password);
-            if(result.password=pass)
+         userData.findOne({email:req.body.email}).then(function(foundItem){
+            if(foundItem)
             {
-                console.log("login successfully");
-                res.redirect("/navbar");
+                //bcrypt checking
+                bcrypt.compare(pass,foundItem.password, function(err, result) {
+                    if(result==true)
+                    {
+                        res.redirect("/navbar");
+                    }
+                });
             }
             else
             {
-                console.log("wrong password");
+                res.redirect("/");
             }
         }).catch(function(err){
             console.log(err);
@@ -136,19 +141,25 @@ app.post("/login",function(req,res){
 
 app.post('/',function(req,res){
     Email_value=req.body.email;
-    const  newUser=new userData({
-        name:req.body.fullname,
-        phoneNo:req.body.phonenumber,
-        email:req.body.email,
-        //hashing
-        password:md5(req.body.password)
+    password=req.body.password;
+    //bcrypt hashing technique with salting rounds
+    bcrypt.hash(password, saltRounds, function(err, hash) {
+        const  newUser=new userData({
+            name:req.body.fullname,
+            phoneNo:req.body.phonenumber,
+            email:req.body.email,
+            //hashing
+            password:hash
+        });
+        newUser.save().then(function(){
+            console.log("user data successfully saved");
+            res.redirect("/navbar");
+         }).catch(function(err){
+             console.log(err);
+         })
     });
-     newUser.save().then(function(){
-        console.log("user data successfully saved");
-     }).catch(function(err){
-         console.log(err);
-     })
-    res.redirect("/navbar");
+     
+   
 });
 
 //but not satisfied with the approch ,website will become slow as data increases for data >100000 delete function

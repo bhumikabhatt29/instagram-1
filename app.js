@@ -11,7 +11,6 @@ var num;
 var edit_image_caption;
 var index_value;
 var image_particular_user_array=[];
-var imgname="";
 //this will help the user to uplode images from the local system
 var storage = multer.diskStorage({
     destination: function (req, file, callback) {
@@ -24,7 +23,7 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage }).single('images');
 
-mongoose.connect("mongodb://127.0.0.1:27017/imageDB", { useNewUrlParser: true });//database name changed to userdb
+mongoose.connect("mongodb://127.0.0.1:27017/UserDB", { useNewUrlParser: true });//database name changed to userdb
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine',ejs) ; 
 app.use(express.static("public"));
@@ -84,8 +83,6 @@ app.get("/profile",function(req,res){
 app.get("/login",function(req,res){
     res.render("login.ejs");
   });
-
-
 
 app.post("/upload",upload,(req,res)=>{
    var image=req.file.originalname;     

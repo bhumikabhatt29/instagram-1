@@ -64,6 +64,9 @@ h2{
         padding: 0.8rem 1rem;
         position: relative;
     }
+    .dropup-center {
+        padding-left:0.3rem;
+    }
     }
 .nav .nav-menu{ 
     display: flex;  
@@ -135,15 +138,56 @@ h2{
 }
 .flex{
     margin-left: 22rem;
-    /* margin-left:30rem; */
 }
-@media only screen and (max-width:1594px){
-    .flex{
-        margin-left:15rem;
-    } 
+
+@media only screen and (max-width: 605px){
+    .nav .nav-menu, .nav .nav-items{
+        flex-direction: column;
     }
-@media only screen and (max-width:1283px){
-.flex{
-    margin-left:12.3rem;
-} 
+    .nav .item{
+        display:none;
+    }
+    .dropup .fas,.fa-solid,.fa-regular{
+        padding-left:0rem;
+    }
+    .nav{   
+        padding: 0 2rem;
+        height: 0rem;
+        min-height: 10vh;
+        overflow: hidden; 
+        padding-left: 6px;
+    }
+    .dropup-center {
+        padding-left:0.5rem;
+    }
+}
+
+@media screen and (max-width: 390px){
+    .nav .nav-menu, .nav .nav-items{
+        flex-direction: column;
+    }
+    .nav .item{
+        display:none;
+    }
+    .dropup .fas,.fa-solid,.fa-regular{
+        padding-left:0rem;
+    }
+    .dropup .btn .fa-bars{
+        padding-left:0rem;
+        margin-left:0;
+    }
+    .nav-item1{
+        padding-left:0rem;
+        margin-left:0;
+    }
+    .nav{   
+        padding: 0 1.8rem;
+        height: 0rem;
+        min-height: 10vh;
+        overflow: hidden; 
+        padding-left: 0px;
+    }
+    .dropup-center {
+        padding-left:0.5rem;
+    }
 }

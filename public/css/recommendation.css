@@ -16,12 +16,90 @@ html, body{
     width:21rem; 
     padding-right:0.05rem;
 }
-@media screen and (max-width: 900px){
+@media screen and (max-width: 912px){
+    .recommendation-box{
+        margin:2.5rem;
+        margin-right:2.3rem ;
+        padding:0.6rem;
+        top:0;
+        bottom:0;
+        right:0;
+       width:17.5rem;
+       padding-right:0.035rem;
+    
+    }
+    .reco .user span,.my-profile .myuser span{
+        font-size:0.7rem;
+    }
+    .reco .btn p{
+        font-size:0.7rem;
+    }
+    .footer{
+        padding-top: 1rem;
+        font-size:0.73rem ;
+        padding-left:1rem;
+    }
+}
+@media screen and (max-width: 865px){
+    .recommendation-box{
+        margin:2.5rem;
+        margin-right:2.2rem ;
+        padding:0.6rem;
+        top:0;
+        bottom:0;
+        right:0;
+       width:14rem;
+       padding-right:0.02rem;
+    
+    }
+    /* .reco .user span,.my-profile .myuser span{
+        font-size:0.54rem;
+    } */
+    .footer{
+        padding-top: 1rem;
+        font-size:0.68rem ;
+        padding-left:1rem;
+    }
+    .reco .btn p{
+        font-size:0.62rem;
+    }
+     h4{
+        font-size:0.7rem;
+    }
+    .reco .user .follow{
+        display:none;
+    }
+    .reco .profile img{
+        position :absolute;
+        justify-content: center;
+        top:0;
+        bottom:0;
+        left:0;
+        border-radius:74px; 
+        height:2.3rem;
+        width: 2.3rem; 
+        padding-left: 3px;  
+    }
+    .my-profile .myprofile img{
+        position :absolute;
+        justify-content: center;
+        top:0;
+        bottom:0;
+        left:0;
+        border-radius:75px; 
+        height:3.4rem;
+        width: 3.4rem; 
+        padding-left: 3px; 
+        padding-bottom:0.1rem;
+    } 
+}
+@media screen and (max-width: 810px){
     .recommendation-box{
         display: none;
         overflow: scroll;
     }
 }
+
 .box .reco{
     padding-bottom:2.7rem;
     position :relative;

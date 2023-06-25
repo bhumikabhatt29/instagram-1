@@ -52,46 +52,212 @@
      overflow: hidden;
      margin-right: 8px;
 }
-@media screen and (max-width: 1593px){
+@media screen and (max-width: 1864px){
     .postSection
     {
-        margin-left: 38rem;
-        margin-top: 1.7rem;
+        margin-left: 45rem;
+        margin-top: 1.6rem;
         margin-bottom: 3rem;
     }
+    .space-x-6{
+        margin-left:20rem;
+    } 
     }
-@media screen and (max-width: 1293px){
+@media screen and (max-width: 1693px){
+    .postSection
+    {
+        margin-left: 37rem;
+        margin-top: 1.6rem;
+        margin-bottom: 3rem;
+    }
+    .space-x-6{
+        margin-left:12rem;
+    } 
+    }
+
+
+@media screen and (max-width: 1483px){
+        .postSection
+        {
+            margin-left: 31rem;
+            margin-top: 1.7rem;
+            margin-bottom: 3rem;
+        }
+        .story  .space-x-6{
+                margin-left: 5.5rem;
+                margin-top: 1.6rem;
+                /* margin-bottom: 1rem; */
+            
+        }
+        }
+@media screen and (max-width: 1312px){
     .postSection
     {
         margin-left: 27.5rem;
         margin-top: 1.7rem;
         margin-bottom: 3rem;
     }
+    .story  .space-x-6{
+        margin-left:3rem;
+    } 
+   
     }
-    @media screen and (max-width: 1175px){
-        .postSection
-        {
-            margin-left: 22rem;
-            margin-top: 1.7rem;
-            margin-bottom: 3rem;
-        }
-        } 
-@media screen and (max-width: 1024px){
+    
+ @media screen and (max-width: 1226px){
+            .story  .space-x-6{
+                margin-left:0.4rem;
+                padding:1.5px;
+            }
             .postSection
             {
-                margin-left: 15.5rem;
+                margin-left: 23.5rem;
+                margin-top: 1.7rem;
+                margin-bottom: 3rem;
+            } 
+            }
+ @media screen and (max-width: 1200px){
+                .postSection
+                {
+                    margin-left: 22rem;
+                    margin-top: 1.7rem;
+                    margin-bottom: 3rem;
+                }
+                .story  .space-x-6{
+                    margin-left:0.4rem;
+                } 
+                .story  .space-x-6 .i4{
+                    display:none;
+                }
+                }  
+@media screen and (max-width: 1090px){
+            .postSection
+            {
+                margin-left: 15.65rem;
                 margin-top: 1.4rem;
                 margin-bottom: 3rem;
             }
+            .story  .space-x-6{
+                margin-left:-5rem;
             } 
-@media screen and (max-width: 900px){
+            } 
+@media screen and (max-width: 970px){
                 .postSection
                 {
-                    margin-left: 15.5rem;
+                    margin-left: 13.5rem;
                     margin-top: 1.4rem;
                     margin-bottom: 3rem;
                 }
+                .card{
+                    width:300px;
+                }
+                .story  .space-x-6{
+                    margin-left:-7.95rem;
+                    size:20px;
+                }
+               
                 } 
+             
+ @media screen and (max-width: 796px){
+                    .postSection
+                    {
+                        margin-left: 15rem;
+                        margin-top: 1.4rem;
+                        margin-bottom: 3rem;
+                    }
+                    .card{
+                        width:360px;
+                    }
+                    .story  .space-x-6{
+                        margin-left:-7.5rem;
+                        size:20px;
+                    }
+                    } 
+@media screen and (max-width: 605px){
+                        .postSection
+                        {
+                            margin-left: 10rem;
+                            margin-top: 1.4rem;
+                            margin-bottom: 3rem;
+                        }
+                        .card{
+                            width:360px;
+                        }
+                        .story  .space-x-6{
+                            margin-left:-11.5rem;
+                            size:20px;
+                        }
+                        }   
+ @media screen and (max-width: 500px){
+                            .postSection
+                            {
+                                margin-left: 7rem;
+                                margin-top: 1.4rem;
+                                margin-bottom: 3rem;
+                            }
+                            .card{
+                                width:310px;
+                            }
+                            .story  .space-x-6{
+                                margin-left:-15.5rem;
+                                size:20px;
+                            }
+                            } 
+ @media screen and (max-width: 460px){
+                                .postSection
+                                {
+                                    margin-left: 5rem;
+                                    margin-top: 1.4rem;
+                                    margin-bottom: 3rem;
+                                }
+                                .card{
+                                    width:310px;
+                                }
+                                .story  .space-x-6{
+                                    margin-left:-16.8rem;
+                                }
+                                } 
+ @media screen and (max-width: 390px){
+                                    .postSection
+                                    {
+                                        margin-left: 4.8rem;
+                                        margin-top: 1.4rem;
+                                        margin-bottom: 3rem;
+                                    }
+                                    .card{
+                                        width:290px;
+                                    }
+                                    .story  .space-x-6{
+                                        margin-left:-17.9rem;
+                                    }
+                                    }  
+@media screen and (max-width: 370px){
+                                        .postSection
+                                        {
+                                            margin-left: 4.3rem;
+                                            margin-top: 1.4rem;
+                                            margin-bottom: 3rem;
+                                        }
+                                        .card{
+                                            width:290px;
+                                        }
+                                        .story  .space-x-6{
+                                            margin-left:-18.5rem;
+                                        }
+                                        } 
+@media screen and (max-width: 355px){
+                     .postSection
+                     {
+                         margin-left: 4.2rem;
+                         margin-top: 1.4rem;
+                         margin-bottom: 3rem;
+                     }
+                     .card{
+                         width:240px;
+                      }
+                     .story  .space-x-6{
+                         margin-left:-19rem;
+                     }
+                     }                                                                                                                                                                            
 .cover
 {
     position:absolute;
@@ -212,4 +378,8 @@
 }
 .dropup .btn .dot{ 
     size: 2.2rem;
+}
+/* story section */
+.story{
+    margin-top: 2rem;
 }

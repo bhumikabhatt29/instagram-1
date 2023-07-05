@@ -11,8 +11,10 @@ const passportLocalMongoose = require("passport-local-mongoose");
 let app = express();
 var Email_value;
 var num;
+var Bio;
 var edit_image_caption;
 var index_value;
+var profileImage="default profile.jpg";
 var image_particular_user_array = [];
 //this will help the user to uplode images from the local system
 var storage = multer.diskStorage({
@@ -23,7 +25,7 @@ var storage = multer.diskStorage({
         callback(null, file.originalname);
     }
 });
-
+var profileupload=multer({storage:storage}).single("Image");
 var upload = multer({ storage: storage }).single('images');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', ejs);
@@ -38,7 +40,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://127.0.0.1:27017/imageDB", { useNewUrlParser: true });//database name changed to userdb
+mongoose.connect("mongodb://127.0.0.1:27017/UserDB", { useNewUrlParser: true });//database name changed to userdb
 //schema
 const imageSchema = new mongoose.Schema({
     imageName: String,
@@ -52,6 +54,12 @@ const userInfo = new mongoose.Schema({
     password: String,
     imageuploded: [imageSchema]
 });
+//schemato store profile info
+const profile=new mongoose.Schema({
+    Email: String,
+    profileName: String,
+    bio:String
+});
 //writting plugin
 userInfo.plugin(passportLocalMongoose,{
     usernameField : "email" 
@@ -59,6 +67,7 @@ userInfo.plugin(passportLocalMongoose,{
 //model
 const imageData = new mongoose.model("imageData", imageSchema);
 const userData = new mongoose.model("userData", userInfo);
+const profileData=new mongoose.model("profileData", profile);
 //using passport local moongoose features
 passport.use((userData.createStrategy({usernameField: 'email',},userData.authenticate())));
 passport.serializeUser(userData.serializeUser());
@@ -77,15 +86,25 @@ app.get("/edit", (req, res) => {
 });
 
 app.get("/navbar", function (req, res) {
-
     if (req.isAuthenticated()) {
         console.log("inside /navbar");
+       
+        profileData.findOne({ Email: Email_value }).then(function (re) {
+            profileImage=re.profileName;
+            Bio=re.bio;
+            console.log(Bio);
+            console.log(profileImage);
+           console.log(re.profileName);
+    }).catch(function(err){
+        console.log(err);
+    });
         userData.findOne({ email: Email_value }).then(function (result) {
             var count = result.imageuploded.length;
             //num is used in /delete route
             num = count;
+            console.log(result.name);
             //updating name as user name
-            res.render("navbar.ejs", { count: count, Result: result.imageuploded, Name: result.name });
+            res.render("navbar.ejs", { count: count, Result: result.imageuploded, Name: result.name,img:profileImage });
         }).catch(function (err) {
             console.log(err);
         });
@@ -98,11 +117,14 @@ app.get("/navbar", function (req, res) {
 })
 
 app.get("/profile", function (req, res) {
+    console.log("insise profile route")
+    // console.log(profileImage);
+    // console.log(Bio);
     userData.findOne({ email: Email_value }).then(function (r) {
         var count = r.imageuploded.length;
         console.log(r);
         console.log(r.imageuploded.length);
-        res.render("profile.ejs", { count: count, Result: r.imageuploded, Name: r.name });
+        res.render("profile.ejs", { count: count, Result: r.imageuploded, Name: r.name,num:num, img:profileImage, bio:Bio });
     }).catch(function (err) {
         console.log(err);
     });
@@ -165,6 +187,17 @@ app.post("/login", function (req, res) {
 
 app.post('/', function (req, res) {
     Email_value = req.body.email;
+    const data = new profileData({
+        Email: Email_value,
+        profileName :profileImage,
+        bio:Bio
+    });
+    data.save().then(function () {
+        console.log("saved succesfully the profile data")
+        // res.redirect("/navbar");
+    }).catch(function (err) {
+        console.log(err);
+    });
     password = req.body.password;
     const name = req.body.fullname;
     const phoneNo = req.body.phonenumber;
@@ -243,7 +276,38 @@ app.post("/editCaption", function (req, res) {
         console.log(err);
     })
 });
+app.get("/edit-profile", function (req, res) {
+    //console.log("request aa gye re baba");
+    res.render("profile-edit.ejs");
+});
 
+app.post("/edit-profile",profileupload, function (req, res) {
+    console.log("inside edit-profile route");
+    var name=req.body.Name;
+    profileImage=req.file.originalname;
+    Bio=req.body.Bio;
+    // console.log(Bio);
+    userData.findOne({ email: Email_value }).then(function (result){
+       result.name=name;
+    //    console.log(name);
+       result.save();
+       console.log("user data name  saved successfully");
+    }).catch(function (err) {
+        console.log(err);
+    })
+    profileData.findOne({Email:Email_value}).then(function(Result){
+        console.log(profileImage);
+        console.log(Bio);
+        Result.bio=Bio;
+        Result.profileName=profileImage;
+        Result.save();
+        console.log("profile data saved successfully");
+        res.redirect("/profile");
+    }).catch(function (err) {
+        console.log(err);
+    })
+  
+});
 
 app.post("/logout",function(req,res){
    console.log("logout request");
@@ -261,7 +325,7 @@ app.post("/logout",function(req,res){
   });
 });
 
-app.listen(3000, function () {
-    console.log("server is running on port 3000");
+app.listen(3002, function () {
+    console.log("server is running on port 3002");
 })
 

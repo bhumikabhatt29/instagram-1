@@ -8,6 +8,11 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css'>
   <link rel="stylesheet" href="css/profile.css">
+  <style>
+    .it{
+      padding-right:6rem;
+    }
+  </style>
 </head>
 
 <body>
@@ -22,14 +27,14 @@
           <!-- profile image -->
           <img class="w-20 h-20 md:w-40 md:h-40 object-cover rounded-full
                      border-2 border-pink-600 p-1"
-            src="images/museum-of-new-zealand-te-papa-tongarewa-0DLfQqUocA4-unsplash.jpg" alt="profile">
+            src="images/<%=img%>" alt="profile">
         </div>
 
         <!-- profile meta -->
         <div class="w-8/12 md:w-7/12 ml-4">
-          <div class="md:flex md:flex-wrap md:items-center mb-4">
-            <h2 class="text-3xl inline-block font-light md:mr-2 mb-2 sm:mb-0">
-              <%Name%>
+          <div class="md:flex md:flex-wrap md:items-center mb-4 ">
+            <h2 class="text-2xl inline-block font-light md:mr-2 mb-2 sm:mb-0 it">
+              <%=Name%>
             </h2>
 
             <!-- badge -->
@@ -40,15 +45,17 @@
           </span> -->
 
             <!-- follow button -->
-            <a href="#" class="bg-blue-500 px-2 py-1 ml-4
+            <form action="/edit-profile" method="get">
+            <a href="/edit-profile" class="bg-blue-500 px-2 py-1 ml-4
                         text-white font-semibold text-sm rounded block text-center 
-                        sm:inline-block block">Follow</a>
+                        sm:inline-block block">Edit</a>
+                      </form>
           </div>
 
           <!-- post, following, followers list for medium screens -->
           <ul class="hidden md:flex space-x-8 mb-4">
             <li>
-              <span class="font-semibold">6</span>
+              <span class="font-semibold"><%=num%></span>
               posts
             </li>
 
@@ -64,17 +71,17 @@
 
           <!-- user meta form medium screens -->
           <div class="hidden md:block">
-            <h1 class="font-semibold">VFX_Divyansh</h1>
-            <span class="bioclass">Vfx Company</span>
-            <p>it is a vfx production house which deals with high end vfx works</p>
-            <span><strong>yt:@vfxdivyansh</strong></span>
+            <h1 class="font-semibold"><%=bio%></h1>
+            <!-- <span class="bioclass">Vfx Company</span>
+            <p class="bio">it is a vfx production house which deals with high end vfx works</p> -->
+            <span><strong class="bio-line4">yt:@instagram!</strong></span>
           </div>
 
         </div>
 
         <!-- user meta form small screens -->
         <div class="md:hidden text-sm my-2">
-          <h1 class="font-semibold">VFX_Divyansh</h1>
+          <h1 class="font-semibold"><%=bio%></h1>
           <span class="bioclass">VFX Company</span>
           <p>it is a vfx production house which deals with high end vfx works</p>
           <span><strong>yt:@vfxdivyansh</strong></span>
@@ -89,7 +96,7 @@
         <ul class="flex md:hidden justify-around space-x-8 border-t 
                 text-center p-2 text-gray-600 leading-snug text-sm">
           <li>
-            <span class="font-semibold text-gray-800 block">6</span>
+            <span class="font-semibold text-gray-800 block"><%=num%></span>
             posts
           </li>
 
@@ -150,7 +157,7 @@
                                     space-x-4 h-full">
                       <span class="p-2">
                         <i class="fas fa-heart"></i>
-                        412K
+                       23K
                       </span>
 
                       <span class="p-2">

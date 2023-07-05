@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="/css/upload.css">
+    <style>
+        .form{
+            padding:0.7rem;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header">
+          Edit Profile 
+        </div>
+        <div class="card-body">
+          <img class="post-img"src="/images/create-post.png" alt="image" >
+          <form action="/edit-profile" method="post"enctype="multipart/form-data" class="form">
+          
+             <strong class="image-text">Profile pic:<input class="image" type="file" name="Image" id="post-image" ></strong>
+            <input type="text" name="Name" id="First_Name caption" placeholder="Write your name"/>
+            <textarea   name="Bio" id="caption bio " placeholder="Write your Bio..." row="6" cols="42"></textarea>
+              <a href="#" class="btn"> <input class="submit" type="submit" value="Submit"></a>
+          </form>
+              </div>
+          </div>
+</body>
+</html>

@@ -325,7 +325,7 @@ app.post("/logout",function(req,res){
   });
 });
 
-app.listen(3002, function () {
-    console.log("server is running on port 3002");
+app.listen(3001, function () {
+    console.log("server is running on port 3001");
 })
 

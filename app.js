@@ -40,7 +40,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://127.0.0.1:27017/UserDB", { useNewUrlParser: true });//database name changed to userdb
+// mongoose.connect("mongodb://127.0.0.1:27017/imageDB", { useNewUrlParser: true });//database name changed to userdb
+mongoose.connect("mongodb+srv://divyanshtanwar04:12345@cluster0.2mlwrvy.mongodb.net/UserDB");
+
 //schema
 const imageSchema = new mongoose.Schema({
     imageName: String,
@@ -325,7 +327,9 @@ app.post("/logout",function(req,res){
   });
 });
 
-app.listen(3001, function () {
-    console.log("server is running on port 3001");
-})
+// app.listen(3000, function () {
+//     console.log("server is running on port 3001");
+// })
+var port = process.env.PORT || 3000;
+app.listen(port);
 

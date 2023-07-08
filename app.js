@@ -42,7 +42,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // mongoose.connect("mongodb://127.0.0.1:27017/imageDB", { useNewUrlParser: true });//database name changed to userdb
-mongoose.connect("mongodb+srv://divyanshtanwar04:"+process.env.PASS+"@cluster0.2mlwrvy.mongodb.net/UserDB");
+mongoose.connect("mongodb+srv://divyanshtanwar04:"+process.env.YES+"@cluster0.2mlwrvy.mongodb.net/UserDB");
 
 //schema
 const imageSchema = new mongoose.Schema({

@@ -4,6 +4,7 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const mongoose = require("mongoose");
+require('dotenv').config();
 //require packages
 const session = require('express-session');
 const passport = require("passport");
@@ -41,7 +42,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // mongoose.connect("mongodb://127.0.0.1:27017/imageDB", { useNewUrlParser: true });//database name changed to userdb
-mongoose.connect("mongodb+srv://divyanshtanwar04:12345@cluster0.2mlwrvy.mongodb.net/UserDB");
+mongoose.connect("mongodb+srv://divyanshtanwar04:"+process.env.PASS+"@cluster0.2mlwrvy.mongodb.net/UserDB");
 
 //schema
 const imageSchema = new mongoose.Schema({
@@ -176,6 +177,7 @@ app.post("/login", function (req, res) {
         if(err)
         {
             console.log(err);
+            
         }
         else
         {
